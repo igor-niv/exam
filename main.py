@@ -109,7 +109,8 @@ def parse_site(root, url):
     links = list(links)
 
     for link in links:
-        sites[url].append(link)
+        if not link in sites[url]:
+            sites[url].append(link)
         if not link in visited_sites:
             parse_site(root, link)
 
