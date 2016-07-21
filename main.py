@@ -7,7 +7,7 @@ sites = dict()
 visited_sites = set()
 
 
-def is_html_text_page(url):
+def is_html_text(url):
 
     if url.find('.css') != -1 or url.find('.png') != -1 or url.find('.xml') != -1 or url.find('.jpg') != -1:
         return False
@@ -62,10 +62,10 @@ def extract_links(line, links):
                 index_from = i
 
 
-def verify_html(link, root='http://www.gehtsoftusa.com'):
+def verify_html(link, root=''):
     if link.find(root) == -1:
         return None
-    is_text = is_html_text_page(link)
+    is_text = is_html_text(link)
     if not is_text:
         print(link + ' is not html document, skip...')
         return None
@@ -116,7 +116,7 @@ def parse_site(root, url):
 
 
 def main():
-    url = 'http://www.gehtsoftusa.com'
+    url = ''
     parse_site(url, url)
     print(sites)
 
